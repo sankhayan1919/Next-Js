@@ -15,16 +15,18 @@ export const sendEmail = async({ email, emailType, userId }: any) => {
             host: "sandbox.smtp.mailtrap.io",
             port: 2525,
             auth: {
-              user: "e707cfe852559e",
-              pass: "********8d15"
+              user: "c57f6dcd4a5315",
+              pass: "********204d"
             }
         });
 
         const mailOptions = {
-            from: 'itsmydummy1919@gmail.com',
+            from: 'itsmydummyprofile@gmail.com',
             to: email,
             subject: emailType === "VERIFY"? "Verify your email" : "Reset your password",
-            html: `<p>Click <a href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">here</a> to ${emailType === "VERIFY"? "verify your email" : "reset your password"}or copy and paste the link in your browser. <br> ${process.env.DOMAIN}/verifyemail?token=${hashedToken}</p>`
+            html: `<p>Click <a href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">here</a>
+            to ${emailType === "VERIFY"? "verify your email" : "reset your password"}
+            or copy and paste the link below in your browser. <br> ${process.env.DOMAIN}/verifyemail?token=${hashedToken}</p>`
         }
         
         const mailresponse = await transport.sendMail(mailOptions);
